@@ -5,7 +5,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 let os = substitute(system('uname'), '\n', '', '')
 if os == 'Linux'
@@ -16,18 +16,23 @@ else
 endif
 
 "Bundle 'jcf/vim-latex'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Yggdroot/indentLine'
-Bundle 'tomasr/molokai'
-Bundle 'altercation/vim-colors-solarized'
-"Bundle 'altercation/solarized'
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Yggdroot/indentLine'
+Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/solarized'
+Plugin 'dracula/vim'
+Plugin 'ajmwagar/vim-deus'
+"Plugin 'junegunn/seoul256.vim'
+Plugin 'scrooloose/syntastic'
 "Bundle 'jalvesaq/Nvim-R'
 "Bundle 'Vim-R-plugin'
 "Bundle 'jalvesaq/VimCom'
 "Bundle 'jalvesaq/R-Vim-runtime'
-Bundle 'jalvesaq/colorout'
+Plugin 'jalvesaq/colorout'
 "Bundle 'klen/python-mode'
+
+call vundle#end()
 
 syntax enable
 
@@ -37,6 +42,9 @@ if has('gui_running')
     "colorscheme solarized
     "colorscheme molokai
     colorscheme molokai_o
+else
+    set background=dark
+    colorscheme molokai
 endif
 
 set number

@@ -1,8 +1,9 @@
 set nocompatible
 filetype off
-set rtp+=$HOME/.vim/bundle/vundle/
-let path='$HOME/.vim/bundle'
-call vundle#rc('$HOME/.vim/bundle')
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 Bundle 'gmarik/vundle'
 

@@ -15,7 +15,6 @@ else
     set guifont=Source\ Code\ Pro:h18
 endif
 
-"Bundle 'jcf/vim-latex'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Yggdroot/indentLine'
 Plugin 'tomasr/molokai'
@@ -23,14 +22,8 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'altercation/solarized'
 Plugin 'dracula/vim'
 Plugin 'ajmwagar/vim-deus'
-"Plugin 'junegunn/seoul256.vim'
 Plugin 'scrooloose/syntastic'
-"Bundle 'jalvesaq/Nvim-R'
-"Bundle 'Vim-R-plugin'
-"Bundle 'jalvesaq/VimCom'
-"Bundle 'jalvesaq/R-Vim-runtime'
 Plugin 'jalvesaq/colorout'
-"Bundle 'klen/python-mode'
 
 call vundle#end()
 
@@ -39,9 +32,7 @@ syntax enable
 if has('gui_running')
     "set t_Co=256
     set background=dark
-    "colorscheme solarized
-    "colorscheme molokai
-    colorscheme molokai_o
+    colorscheme molokai
 else
     set background=dark
     colorscheme molokai
@@ -77,4 +68,3 @@ set ruler
 set cole=0
 let g:tex_conceal = ""
 let g:pymode_python = 'python3'
-"let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']

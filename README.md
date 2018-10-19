@@ -11,6 +11,24 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 ## Git Configuration
 
+Import a key:
+
+```bash
+gpg2 --import FILENAME
+```
+
+List all secret keys:
+
+```bash
+gpg2 --list-secret-keys --keyid-format LONG
+```
+
+Edit key setting:
+
+```bash
+gpg2 --edit-key KEYCODE
+```
+
 #### Global
 
 ```bash

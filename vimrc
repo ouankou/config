@@ -62,3 +62,7 @@ set ruler
 set cole=0
 let g:tex_conceal = ""
 let g:pymode_python = 'python3'
+if has("autocmd")
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+        \| exe "normal! g'\"" | endif
+endif

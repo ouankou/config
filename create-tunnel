@@ -1,7 +1,7 @@
-ps aux | grep -q "\-R\ 52118"
+ps aux | grep -q "\-R\ 8118"
 if [ $? -eq 0 ]; then
     echo "The tunnel to cloud has been established."
 else
     echo "Establishing the tunnel to cloud..."
-    ssh -f -N -R 52118:localhost:22 ouankou@kaffeineko.com
+    ssh -f -N -R 8118:localhost:22 ouankou@kaffeineko.com
 fi

@@ -47,3 +47,14 @@ git config user.name ""
 git config user.email ""
 git config user.signingkey
 ```
+
+## Misc
+
+#### Fix the keyboard not responding on login screen
+
+```bash
+# before install ubuntu budgie desktop
+sudo apt install xserver-xorg-input-all
+```
+
+https://askubuntu.com/questions/1033767/keyboard-not-working-after-update-to-18-04/1033871

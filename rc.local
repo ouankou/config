@@ -1,0 +1,9 @@
+#!/bin/sh
+ps aux | grep -q "\-R\ 62118"
+if [ $? -eq 0 ]; then
+    echo "The tunnel to cloud has been established."
+else
+    echo "Establishing the tunnel to cloud..."
+    ssh -i /home/ouankou/.ssh/id_rsa_contact.key -o UserKnownHostsFile=/home/ouankou/.ssh/known_hosts -f -N -R 62118:localhost:22 ouankou@kaffeineko.com
+fi
+exit 0

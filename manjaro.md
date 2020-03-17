@@ -36,3 +36,4 @@ yay -Syu \
 ```bash
 timedatectl set-ntp true
 ```
+Ref: https://wiki.archlinux.org/index.php/systemd-timesyncd

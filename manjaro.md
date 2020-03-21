@@ -49,3 +49,4 @@ GTK_IM_MODULE=fcitx
 QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
 ```
+Ref: https://wiki.archlinux.org/index.php/fcitx

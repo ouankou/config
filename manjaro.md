@@ -14,6 +14,9 @@ yay -Syu \
     clang \
     cmake \
     docker-compose \
+    fcitx-configtool \
+    fcitx-im \
+    fcitx-rime \
     gimp \
     gvim \
     htop \
@@ -37,3 +40,12 @@ yay -Syu \
 timedatectl set-ntp true
 ```
 Ref: https://wiki.archlinux.org/index.php/systemd-timesyncd
+
+# Setup Fcitx
+
+`fcitx-im` is required, otherwise `CTRL+SPACE` may not work. Add the following content to `~/.pam_environment`.
+```
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+```

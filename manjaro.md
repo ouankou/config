@@ -13,6 +13,7 @@ yay -Syu \
     chromium \
     clang \
     cmake \
+    cndrvcups-lt \
     docker-compose \
     fcitx-configtool \
     fcitx-im \

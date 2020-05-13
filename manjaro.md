@@ -30,6 +30,7 @@ yay -Syu \
     texlive-most \
     ttf-jetbrains-mono \
     uget \
+    unrar \
     vlc \
     wqy-microhei \
     wqy-zenhei

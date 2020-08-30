@@ -2,7 +2,7 @@
 # User specific aliases and functions
 export LD_LIBRARY_PATH=/opt/intel/mkl/lib/intel64:$LD_LIBRARY_PATH
 export PATH=/opt/intel/bin:$PATH
-export LD_LIBRARY_PATH=~/Projects/rex/install/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$HOME/Projects/rex/install/lib:$LD_LIBRARY_PATH
 # Add Java lib path
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64/server:$LD_LIBRARY_PATH

@@ -10,6 +10,7 @@
 yay -Syu \
     aria2 \
     automake \
+    base-devel \
     chromium \
     clang \
     cmake \

@@ -8,9 +8,24 @@ export PATH=/usr/local/cuda/bin:${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 # Add REX compiler path
-export REX_ROOT=$HOME/Projects/rexcompiler
+export REX_ROOT=$HOME/Projects/rexdev
 export LD_LIBRARY_PATH=$REX_ROOT/rex_install/lib:$LD_LIBRARY_PATH
 export PATH=$REX_ROOT/rex_install/bin:$PATH
+
+# Add LLVM path
+export LLVM=$HOME/Projects/llvm10
+export LLVM_SRC=$LLVM/llvm_src
+export LLVM_PATH=$LLVM/llvm_install
+export LLVM_BUILD=$LLVM/llvm_build
+
+export PATH=$LLVM_PATH/bin:$PATH
+export LD_LIBRARY_PATH=$LLVM_PATH/libexec:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LLVM_PATH/lib:$LD_LIBRARY_PATH
+export LIBRARY_PATH=$LLVM_PATH/libexec:$LIBRARY_PATH
+export LIBRARY_PATH=$LLVM_PATH/lib:$LIBRARY_PATH
+export MANPATH=$LLVM_PATH/share/man:$MANPATH
+export C_INCLUDE_PATH=$LLVM_PATH/include:$C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=$LLVM_PATH/include:CPLUS_INCLUDE_PATH
 
 # Add GPG support
 export GPG_TTY=$(tty)

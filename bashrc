@@ -39,3 +39,5 @@ fi
 if [ ! $(echo $added_keys | grep -o -e id_rsa_llnl) ]; then
     ssh-add "$HOME/.ssh/id_rsa_llnl.key" &> /dev/null
 fi
+
+export CUDA_ARCH=sm_61

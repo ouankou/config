@@ -52,6 +52,9 @@ sudo apt install -y \
         zlib1g-dev
 
 sudo apt install -y \
+        fonts-firacode \
+        fonts-wqy-microhei \
+        fonts-wqy-zenhei \
         gnupg2 \
         htop \
         libelf-dev \

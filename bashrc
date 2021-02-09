@@ -13,7 +13,7 @@ export LD_LIBRARY_PATH=$REX_ROOT/rex_install/lib:$LD_LIBRARY_PATH
 export PATH=$REX_ROOT/rex_install/bin:$PATH
 
 # Add LLVM path
-export LLVM=$HOME/Projects/llvm10
+export LLVM=$HOME/Projects/llvm12_gpu
 export LLVM_SRC=$LLVM/llvm_src
 export LLVM_PATH=$LLVM/llvm_install
 export LLVM_BUILD=$LLVM/llvm_build

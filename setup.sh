@@ -63,6 +63,9 @@ sudo apt install -y \
         ninja-build \
         vim-gtk3
 
+sudo add-apt-repository ppa:christian-boxdoerfer/fsearch-daily
+sudo apt update
+sudo apt install fsearch-trunk
 
 git config --global user.name "Anjia Wang"
 git config --global user.email "anjiawang@gmail.com"

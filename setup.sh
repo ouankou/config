@@ -52,6 +52,7 @@ sudo apt install -y \
         zlib1g-dev
 
 sudo apt install -y \
+        fcitx-rime \
         fonts-firacode \
         fonts-wqy-microhei \
         fonts-wqy-zenhei \
@@ -61,11 +62,14 @@ sudo apt install -y \
         libffi-dev \
         neofetch \
         ninja-build \
+        psensor \
         vim-gtk3
 
 sudo add-apt-repository -y ppa:christian-boxdoerfer/fsearch-daily
 sudo apt update
 sudo apt install -y fsearch-trunk
+
+cat bashrc >> $HOME/.bashrc
 
 git config --global user.name "Anjia Wang"
 git config --global user.email "anjiawang@gmail.com"

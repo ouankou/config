@@ -19,12 +19,18 @@ yay -Syu \
     fcitx-configtool \
     fcitx-im \
     fcitx-rime \
+    fsearch-git \
+    gcc9 \
+    gcc9-fortran \
     gimp \
     gvim \
     htop \
     inkscape \
     jdk8-openjdk \
+    libelf \
+    libffi \
     neofetch \
+    ninja \
     octave \
     p7zip \
     python-virtualenv \
@@ -53,3 +59,17 @@ QT_IM_MODULE=fcitx
 XMODIFIERS=@im=fcitx
 ```
 Ref: https://wiki.archlinux.org/index.php/fcitx
+
+# Install GCC 9
+
+Manjaro Linux is shipped with GCC 10.2, but REX/ROSE only supports up to GCC 9. There's no binary distributed and we have to build GCC 9 using AUR. Other than the `gcc` binary shipped with system, no other `gcc` can be found in the current searching locations, such as `$PATH`.
+
+```bash
+yay -Syu gcc9 gcc9-fortran
+```
+To set up the symbol link to `gfortran-9`:
+
+```bash
+cd /usr/bin
+sudo ln -s gfortran-9 gfortran
+```

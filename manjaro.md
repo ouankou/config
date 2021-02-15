@@ -73,3 +73,26 @@ To set up the symbol link to `gfortran-9`:
 cd /usr/bin
 sudo ln -s gfortran-9 gfortran
 ```
+
+# Set up the default JDK
+
+ROSE/REX development requires OpenJDK 8 while other programs may need a newer version. To select a different default JDK version:
+
+```bash
+archlinux-java status
+sudo archlinux-java set java-8-openjdk
+sudo archlinux-java set java-15-openjdk
+```
+
+# Reinstall the NVIDIA driver
+
+Sometimes a hard reset could cause that the system boots to a blank screen and fails to enter the desktop environment. In this case, we may need to reinstall the NVIDIA driver. First press `Ctrl + Alt + F2` to enter `tty2` and login the system as usual.
+
+```bash
+yay -Rns cuda
+sudo mhwd -r pci video-nvidia
+sudo reboot
+sudo mhwd -a pci nonfree 0300
+sudo reboot
+yay -Syu cuda
+```

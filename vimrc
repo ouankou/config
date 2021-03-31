@@ -24,7 +24,13 @@ Plugin 'ajmwagar/vim-deus'
 Plugin 'scrooloose/syntastic'
 Plugin 'jalvesaq/colorout'
 
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
+
 call vundle#end()
+
+call glaive#Install()
 
 syntax enable
 

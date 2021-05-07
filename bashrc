@@ -13,7 +13,7 @@ export LD_LIBRARY_PATH=$REX_ROOT/rex_install/lib:$LD_LIBRARY_PATH
 export PATH=$REX_ROOT/rex_install/bin:$PATH
 
 # Add LLVM path
-export LLVM=$HOME/Projects/llvm12_gpu
+export LLVM=$HOME/Projects/llvm_gpu
 export LLVM_SRC=$LLVM/llvm_src
 export LLVM_PATH=$LLVM/llvm_install
 export LLVM_BUILD=$LLVM/llvm_build
@@ -40,5 +40,5 @@ if [ ! $(echo $added_keys | grep -o -e id_rsa_llnl) ]; then
     ssh-add "$HOME/.ssh/id_rsa_llnl.key" &> /dev/null
 fi
 
-export CUDA_ARCH=sm_61
+export CUDA_ARCH=sm_86
 export BOOST_LIB=/usr/lib/x86_64-linux-gnu

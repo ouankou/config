@@ -11,6 +11,7 @@ yay -Syu \
     aria2 \
     automake \
     base-devel \
+    boost \
     chromium \
     clang \
     cmake \
@@ -33,6 +34,7 @@ yay -Syu \
     ninja \
     octave \
     p7zip \
+    psensor \
     python-virtualenv \
     texlive-most \
     ttf-jetbrains-mono \
@@ -46,9 +48,16 @@ yay -Syu \
 # Fix Time Synchronization
 
 ```bash
-timedatectl set-ntp true
+sudo timedatectl set-ntp true
 ```
 Ref: https://wiki.archlinux.org/index.php/systemd-timesyncd
+
+# Fix Time Difference between Windows 10
+
+```bash
+sudo timedatectl set-local-rtc 1 --adjust-system-clock
+```
+Ref: https://www.howtogeek.com/323390/how-to-fix-windows-and-linux-showing-different-times-when-dual-booting/
 
 # Setup Fcitx
 

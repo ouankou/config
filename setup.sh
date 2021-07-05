@@ -9,6 +9,7 @@
 sudo apt update && \
 sudo apt install -y openjdk-8-jdk && \
 sudo apt install -y \
+        antlr4 \
         autoconf \
         automake \
         autotools-dev \
@@ -31,6 +32,7 @@ sudo apt install -y \
         git \
         gperf \
         graphviz \
+        libantlr4-runtime-dev \
         libboost-all-dev \
         libgmp-dev \
         libhpdf-dev \

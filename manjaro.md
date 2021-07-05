@@ -8,11 +8,12 @@
 ```bash
 # Common tools
 yay -Syu \
+    antlr4 \
+    antlr4-runtime \
     aria2 \
     automake \
     base-devel \
     boost \
-    chromium \
     clang \
     cmake \
     cndrvcups-lt \
@@ -36,6 +37,7 @@ yay -Syu \
     p7zip \
     psensor \
     python-virtualenv \
+    telegram-desktop \
     texlive-most \
     ttf-jetbrains-mono \
     uget \

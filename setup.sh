@@ -38,7 +38,6 @@ sudo apt install -y \
         libhpdf-dev \
         libmpc-dev \
         libmpfr-dev \
-        libomp-dev \
         libtool \
         libxml2-dev \
         patchutils \
@@ -54,22 +53,16 @@ sudo apt install -y \
         zlib1g-dev
 
 sudo apt install -y \
-        fcitx-rime \
-        fonts-firacode \
-        fonts-wqy-microhei \
-        fonts-wqy-zenhei \
         gnupg2 \
         htop \
         libelf-dev \
         libffi-dev \
         neofetch \
-        ninja-build \
-        psensor \
-        vim-gtk3
+        ninja-build
 
-sudo add-apt-repository -y ppa:christian-boxdoerfer/fsearch-daily
+sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 sudo apt update
-sudo apt install -y fsearch-trunk
+sudo apt install -y g++-11
 
 cat bashrc >> $HOME/.bashrc
 
@@ -79,3 +72,16 @@ git config --global commit.gpgsign true
 git config --global gpg.program gpg2
 git config --global core.editor "vim"
 #git config --global user.signingkey
+
+sudo apt install -y \
+        fcitx-rime \
+        fonts-firacode \
+        fonts-wqy-microhei \
+        fonts-wqy-zenhei \
+        psensor \
+        vim-gtk3
+
+sudo add-apt-repository -y ppa:christian-boxdoerfer/fsearch-daily
+sudo apt update
+sudo apt install -y fsearch-trunk
+

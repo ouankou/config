@@ -1,5 +1,6 @@
-# vimrc
-My bash and vim configuration.
+# Config
+
+Some shell scripts and system configurations.
 
 # Guide
 Put the SSH key in `.ssh` folder.

@@ -1,7 +1,12 @@
 
 # Add Java lib path
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64/server:$LD_LIBRARY_PATH
+if [ -z "${LD_LIBRARY_PATH}" ]
+then
+    LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64/server
+else
+    LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64/server:$LD_LIBRARY_PATH
+fi
 
 # Add REX compiler path
 export REX_ROOT=$HOME/Projects/rexdev
@@ -19,7 +24,13 @@ export LLVM_BUILD=$LLVM/llvm_build
 export PATH=$LLVM_PATH/bin:$PATH
 export LD_LIBRARY_PATH=$LLVM_PATH/libexec:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LLVM_PATH/lib:$LD_LIBRARY_PATH
-export LIBRARY_PATH=$LLVM_PATH/libexec:$LIBRARY_PATH
+if [ -z "${LIBRARY_PATH}" ]
+then
+    LIBRARY_PATH=$LLVM_PATH/libexec
+else
+    LIBRARY_PATH=$LLVM_PATH/libexec:$LIBRARY_PATH
+fi
+
 export LIBRARY_PATH=$LLVM_PATH/lib:$LIBRARY_PATH
 export MANPATH=$LLVM_PATH/share/man:$MANPATH
 if [ -z "${C_INCLUDE_PATH}" ]

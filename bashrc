@@ -3,9 +3,9 @@
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 if [ -z "${LD_LIBRARY_PATH}" ]
 then
-    LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64/server
+    export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64/server
 else
-    LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64/server:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64/server:$LD_LIBRARY_PATH
 fi
 
 # Add REX compiler path
@@ -26,24 +26,24 @@ export LD_LIBRARY_PATH=$LLVM_PATH/libexec:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LLVM_PATH/lib:$LD_LIBRARY_PATH
 if [ -z "${LIBRARY_PATH}" ]
 then
-    LIBRARY_PATH=$LLVM_PATH/libexec
+    export LIBRARY_PATH=$LLVM_PATH/libexec
 else
-    LIBRARY_PATH=$LLVM_PATH/libexec:$LIBRARY_PATH
+    export LIBRARY_PATH=$LLVM_PATH/libexec:$LIBRARY_PATH
 fi
 
 export LIBRARY_PATH=$LLVM_PATH/lib:$LIBRARY_PATH
 export MANPATH=$LLVM_PATH/share/man:$MANPATH
 if [ -z "${C_INCLUDE_PATH}" ]
 then
-    C_INCLUDE_PATH=$LLVM_PATH/include
+    export C_INCLUDE_PATH=$LLVM_PATH/include
 else
-    C_INCLUDE_PATH=$LLVM_PATH/include:$C_INCLUDE_PATH
+    export C_INCLUDE_PATH=$LLVM_PATH/include:$C_INCLUDE_PATH
 fi
 if [ -z "${C_INCLUDE_PATH}" ]
 then
-    CPLUS_INCLUDE_PATH=$LLVM_PATH/include
+    export CPLUS_INCLUDE_PATH=$LLVM_PATH/include
 else
-    CPLUS_INCLUDE_PATH=$LLVM_PATH/include:$CPLUS_INCLUDE_PATH
+    export CPLUS_INCLUDE_PATH=$LLVM_PATH/include:$CPLUS_INCLUDE_PATH
 fi
 
 # Add GPG support
@@ -63,6 +63,7 @@ fi
 NVIDIA_HPC_VERSION=22.1
 export PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/bin:${PATH}
 export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/lib64:${LD_LIBRARY_PATH}
+export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda
 export CUDA_ARCH=sm_86
 
 export NVARCH=`uname -s`_`uname -m`
@@ -73,7 +74,7 @@ export PATH=$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/comm_libs/mpi/bin:${PATH}
 export MANPATH=$MANPATH:$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/comm_libs/mpi/man
 
 # Add GCC path
-export OPT_GCC=/opt/gcc/gcc-11.x-install
+OPT_GCC=/opt/gcc/gcc-11.x-install
 export PATH=${OPT_GCC}/bin:$PATH
 export LD_LIBRARY_PATH=${OPT_GCC}/lib64:$LD_LIBRARY_PATH
 

@@ -39,7 +39,7 @@ then
 else
     export C_INCLUDE_PATH=$LLVM_PATH/include:$C_INCLUDE_PATH
 fi
-if [ -z "${C_INCLUDE_PATH}" ]
+if [ -z "${CPLUS_INCLUDE_PATH}" ]
 then
     export CPLUS_INCLUDE_PATH=$LLVM_PATH/include
 else
@@ -64,6 +64,7 @@ NVIDIA_HPC_VERSION=22.1
 export PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/bin:${PATH}
 export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/lib64:${LD_LIBRARY_PATH}
 export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda
+export CUDA_PATH=${CUDA_HOME}
 export CUDA_ARCH=sm_86
 
 export NVARCH=`uname -s`_`uname -m`

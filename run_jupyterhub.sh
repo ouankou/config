@@ -7,7 +7,8 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 
 cd $SCRIPTPATH
 # virtualenv -p python3 venv
-# pip install -r jupyterhub_requirements.txt
 cd venv
 . ./bin/activate
+# pip install -r jupyterhub_requirements.txt
+pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U
 nohup jupyterhub --no-ssl &

@@ -7,7 +7,7 @@
 # copy rc.local to /etc/
 
 sudo apt update && \
-sudo apt install -y openjdk-8-jdk && \
+sudo apt install -y openjdk-11-jdk && \
 sudo apt install -y \
         antlr4 \
         autoconf \
@@ -25,9 +25,11 @@ sudo apt install -y \
         doxygen \
         flex \
         gawk \
-        gcc-multilib \
+        g++-9 \
+        g++-9-multilib \
+        gcc-9-multilib \
         gdb \
-        gfortran \
+        gfortran-9 \
         ghostscript \
         git \
         gperf \
@@ -43,7 +45,7 @@ sudo apt install -y \
         patchutils \
         perl-doc \
         python3-dev \
-        sqlite \
+        sqlite3 \
         texinfo \
         unzip \
         vim \

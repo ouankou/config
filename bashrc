@@ -1,11 +1,11 @@
 
 # Add Java lib path
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 if [ -z "${LD_LIBRARY_PATH}" ]
 then
-    export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64/server
+    export LD_LIBRARY_PATH=$JAVA_HOME/lib/server
 else
-    export LD_LIBRARY_PATH=$JAVA_HOME/jre/lib/amd64/server:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=$JAVA_HOME/lib/server:$LD_LIBRARY_PATH
 fi
 
 # Add REX compiler path
@@ -60,7 +60,7 @@ if [ ! $(echo $added_keys | grep -o -e id_rsa_llnl) ]; then
 fi
 
 # Add CUDA path
-NVIDIA_HPC_VERSION=22.1
+NVIDIA_HPC_VERSION=22.3
 export PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/bin:${PATH}
 export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/lib64:${LD_LIBRARY_PATH}
 export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda

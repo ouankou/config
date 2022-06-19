@@ -26,8 +26,6 @@ sudo apt install -y \
         flex \
         gawk \
         g++-9 \
-        g++-9-multilib \
-        gcc-9-multilib \
         gdb \
         gfortran-9 \
         ghostscript \
@@ -61,6 +59,11 @@ sudo apt install -y \
         libffi-dev \
         neofetch \
         ninja-build
+
+# Packages not available on Arm
+sudo apt install -y \
+        g++-9-multilib \
+        gcc-9-multilib
 
 sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 sudo apt update

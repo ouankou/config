@@ -83,10 +83,13 @@ sudo apt install -y \
         fonts-firacode \
         fonts-wqy-microhei \
         fonts-wqy-zenhei \
+        intel-opencl-icd \
+        libdrm2 \
+        libxcb-dri3-0 \
         psensor \
         vim-gtk3
 
 sudo add-apt-repository -y ppa:christian-boxdoerfer/fsearch-daily
 sudo apt update
-sudo apt install -y fsearch-trunk
+sudo apt install -y fsearch
 

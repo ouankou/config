@@ -1,7 +1,6 @@
 
 # Add Java lib path
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-#export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-arm64
 if [ -z "${LD_LIBRARY_PATH}" ]
 then
     export LD_LIBRARY_PATH=$JAVA_HOME/lib/server
@@ -17,10 +16,10 @@ export BOOST_LIB=/usr/lib/x86_64-linux-gnu
 export PATH=/snap/bin:$PATH
 
 # Add LLVM path
-export LLVM=$HOME/Projects/llvm_gpu
+export LLVM=$HOME/Projects/opt-llvm-15
 export LLVM_SRC=$LLVM/llvm_src
-export LLVM_PATH=$LLVM/llvm_install
-#export LLVM_PATH=/usr/lib/llvm-14
+export LLVM_PATH=/opt/llvm/llvm-15.x-install
+#export LLVM_PATH=/usr/lib/llvm-15
 export LLVM_BUILD=$LLVM/llvm_build
 
 export PATH=$LLVM_PATH/bin:$PATH
@@ -63,9 +62,10 @@ fi
 
 # Add CUDA path
 NVIDIA_HPC_VERSION=22.1
-export PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/bin:${PATH}
-export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/lib64:${LD_LIBRARY_PATH}
-export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/11.5
+CUDA_VERSION=11.5
+export PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}/bin:${PATH}
+export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}/lib64:${LD_LIBRARY_PATH}
+export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}
 export CUDA_PATH=${CUDA_HOME}
 export CUDA_ARCH=sm_86
 

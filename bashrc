@@ -81,3 +81,7 @@ OPT_GCC=/opt/gcc/gcc-11.x-install
 export PATH=${OPT_GCC}/bin:$PATH
 export LD_LIBRARY_PATH=${OPT_GCC}/lib64:$LD_LIBRARY_PATH
 
+# Intel OneAPI compiler
+# Emulate FP64 on Intel GPUs (Xe, Arc, ...)
+export OverrideDefaultFP64Settings=1
+export IGC_EnableDPEmulation=1

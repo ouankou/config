@@ -76,6 +76,7 @@ git config --global user.email "anjiawang@gmail.com"
 git config --global commit.gpgsign true
 git config --global gpg.program gpg2
 git config --global core.editor "vim"
+git config --global pull.rebase false
 #git config --global user.signingkey
 
 sudo apt install -y \

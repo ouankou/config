@@ -16,9 +16,7 @@ endif
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'Yggdroot/indentLine'
-Plugin 'tomasr/molokai'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'altercation/solarized'
+Plugin 'nanotech/jellybeans.vim'
 Plugin 'dracula/vim'
 Plugin 'ajmwagar/vim-deus'
 Plugin 'scrooloose/syntastic'
@@ -33,15 +31,9 @@ call vundle#end()
 call glaive#Install()
 
 syntax enable
-
-if has('gui_running')
-    "set t_Co=256
-    set background=dark
-    colorscheme molokai
-else
-    set background=dark
-    colorscheme molokai
-endif
+let g:rehash256 = 1
+set background=dark
+colorscheme jellybeans
 
 set number
 set printoptions=number:y

@@ -65,8 +65,8 @@ NVIDIA_HPC_VERSION=22.11
 CUDA_VERSION=11.8
 export PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}/bin:${PATH}
 export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}/lib64:${LD_LIBRARY_PATH}
-export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}
-export CUDA_PATH=${CUDA_HOME}
+export NVHPC_CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}
+export CUDA_PATH=${NVHPC_CUDA_HOME}
 
 export NVARCH=`uname -s`_`uname -m`
 export NVCOMPILERS=/opt/nvidia/hpc_sdk
@@ -74,11 +74,6 @@ export MANPATH=$MANPATH:$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/compilers/man
 export PATH=$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/compilers/bin:${PATH}
 export PATH=$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/comm_libs/mpi/bin:${PATH}
 export MANPATH=$MANPATH:$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/comm_libs/mpi/man
-
-# Add GCC path
-OPT_GCC=/opt/gcc/gcc-13.x-install
-export PATH=${OPT_GCC}/bin:$PATH
-export LD_LIBRARY_PATH=${OPT_GCC}/lib64:$LD_LIBRARY_PATH
 
 # WSL
 export PATH=${PATH}:/usr/lib/wsl/lib

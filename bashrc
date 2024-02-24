@@ -1,5 +1,5 @@
 # Color bash prompt
-export PS1="\[\e[38;5;39m\]\u\[\e[38;5;45m\]@\[\e[38;5;51m\]\h \[\e[38;5;195m\]\w \[\033[0m\]$ "
+export PS1="\[\e[38;5;34m\]\u\[\e[38;5;40m\]@\[\e[38;5;46m\]\h:\[\e[38;5;154m\]\w\[\033[0m\]$ "
 
 # Add Java lib path
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64

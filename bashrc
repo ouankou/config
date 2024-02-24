@@ -16,11 +16,12 @@ export BOOST_LIB=/usr/lib/x86_64-linux-gnu
 export PATH=/snap/bin:$PATH
 
 # Add LLVM path
-export LLVM=$HOME/Projects/opt-llvm-17
+export LLVM=$HOME/Projects/llvm-18
 export LLVM_SRC=$LLVM/llvm_src
-export LLVM_PATH=/opt/llvm/llvm-install
-#export LLVM_PATH=/usr/lib/llvm-17
 export LLVM_BUILD=$LLVM/llvm_build
+export LLVM_PATH=$LLVM/llvm_install
+#export LLVM_PATH=/opt/llvm/llvm-install
+#export LLVM_PATH=/usr/lib/llvm-18
 
 export PATH=$LLVM_PATH/bin:$PATH
 export LD_LIBRARY_PATH=$LLVM_PATH/libexec:$LD_LIBRARY_PATH
@@ -61,8 +62,8 @@ if [ ! $(echo $added_keys | grep -o -e id_rsa_llnl) ]; then
 fi
 
 # Add CUDA path
-NVIDIA_HPC_VERSION=22.11
-CUDA_VERSION=11.8
+NVIDIA_HPC_VERSION=23.11
+CUDA_VERSION=12.3
 export PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}/bin:${PATH}
 export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}/lib64:${LD_LIBRARY_PATH}
 export NVHPC_CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}
@@ -84,3 +85,5 @@ export OverrideDefaultFP64Settings=1
 export IGC_EnableDPEmulation=1
 
 export TERM=screen-256color
+
+export OMP_TARGET_OFFLOAD=MANDATORY

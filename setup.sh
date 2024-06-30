@@ -16,8 +16,6 @@ sudo apt install -y \
         bc \
         binutils \
         bison \
-        build-essential \
-        cmake \
         cpufrequtils \
         curl \
         device-tree-compiler \
@@ -42,23 +40,27 @@ sudo apt install -y \
         libxml2-dev \
         patchutils \
         perl-doc \
-        python3-dev \
         sqlite3 \
         texinfo \
         unzip \
-        vim \
         wget \
         zip \
         zlib1g \
         zlib1g-dev
 
 sudo apt install -y \
+        binutils-dev \
+        build-essential \
+        cmake \
         gnupg2 \
         htop \
         libelf-dev \
         libffi-dev \
+        mold \
         neofetch \
-        ninja-build
+        ninja-build \
+        python3-dev \
+        vim
 
 # Packages not available on Arm
 sudo apt install -y \

@@ -1,6 +1,3 @@
-# Color bash prompt
-export PS1="\[\e[38;5;34m\]\u\[\e[38;5;40m\]@\[\e[38;5;46m\]\h:\[\e[38;5;154m\]\w\[\033[0m\]$ "
-
 # Add Java lib path
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 if [ -z "${LD_LIBRARY_PATH}" ]
@@ -18,7 +15,7 @@ export BOOST_LIB=/usr/lib/x86_64-linux-gnu
 export PATH=/snap/bin:$PATH
 
 # Add LLVM path
-export LLVM=$HOME/Projects/llvm-18
+export LLVM=$HOME/Projects/llvm-trunk
 export LLVM_SRC=$LLVM/llvm_src
 export LLVM_BUILD=$LLVM/llvm_build
 export LLVM_PATH=$LLVM/llvm_install
@@ -28,6 +25,7 @@ export LLVM_PATH=$LLVM/llvm_install
 export PATH=$LLVM_PATH/bin:$PATH
 export LD_LIBRARY_PATH=$LLVM_PATH/libexec:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LLVM_PATH/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LLVM_PATH/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 if [ -z "${LIBRARY_PATH}" ]
 then
     export LIBRARY_PATH=$LLVM_PATH/libexec
@@ -36,6 +34,7 @@ else
 fi
 
 export LIBRARY_PATH=$LLVM_PATH/lib:$LIBRARY_PATH
+export LIBRARY_PATH=$LLVM_PATH/lib/x86_64-linux-gnu:$LIBRARY_PATH
 export MANPATH=$LLVM_PATH/share/man:$MANPATH
 if [ -z "${C_INCLUDE_PATH}" ]
 then
@@ -64,7 +63,7 @@ if [ ! $(echo $added_keys | grep -o -e id_rsa_llnl) ]; then
 fi
 
 # Add CUDA path
-NVIDIA_HPC_VERSION=23.11
+NVIDIA_HPC_VERSION=24.3
 CUDA_VERSION=12.3
 export PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}/bin:${PATH}
 export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}/lib64:${LD_LIBRARY_PATH}

@@ -85,6 +85,6 @@ export PATH=${PATH}:/usr/lib/wsl/lib
 export OverrideDefaultFP64Settings=1
 export IGC_EnableDPEmulation=1
 
-export TERM=screen-256color
-
 export OMP_TARGET_OFFLOAD=MANDATORY
+
+export RUSTICL_ENABLE=radeonsi

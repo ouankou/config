@@ -15,7 +15,7 @@ export BOOST_LIB=/usr/lib/x86_64-linux-gnu
 export PATH=/snap/bin:$PATH
 
 # Add LLVM path
-export LLVM=$HOME/Projects/llvm-trunk
+export LLVM=$HOME/Projects/llvm-19
 export LLVM_SRC=$LLVM/llvm_src
 export LLVM_BUILD=$LLVM/llvm_build
 export LLVM_PATH=$LLVM/llvm_install
@@ -25,7 +25,7 @@ export LLVM_PATH=$LLVM/llvm_install
 export PATH=$LLVM_PATH/bin:$PATH
 export LD_LIBRARY_PATH=$LLVM_PATH/libexec:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$LLVM_PATH/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LLVM_PATH/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$LLVM_PATH/lib/x86_64-unknown-linux-gnu:$LD_LIBRARY_PATH
 if [ -z "${LIBRARY_PATH}" ]
 then
     export LIBRARY_PATH=$LLVM_PATH/libexec
@@ -67,6 +67,7 @@ NVIDIA_HPC_VERSION=24.3
 CUDA_VERSION=12.3
 export PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}/bin:${PATH}
 export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}/lib64:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/math_libs/${CUDA_VERSION}/targets/x86_64-linux/lib:${LD_LIBRARY_PATH}
 export NVHPC_CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}
 export CUDA_PATH=${NVHPC_CUDA_HOME}
 

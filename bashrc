@@ -83,8 +83,9 @@ export PATH=${PATH}:/usr/lib/wsl/lib
 
 # Intel OneAPI compiler
 # Emulate FP64 on Intel GPUs (Xe, Arc, ...)
-export OverrideDefaultFP64Settings=1
-export IGC_EnableDPEmulation=1
+# Disabled since it may slow down clpeak significantly.
+# export OverrideDefaultFP64Settings=1
+# export IGC_EnableDPEmulation=1
 
 export OMP_TARGET_OFFLOAD=MANDATORY
 

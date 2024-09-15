@@ -76,8 +76,8 @@ cat bashrc >> $HOME/.bashrc
 git config --global user.name "Anjia Wang"
 git config --global user.email "anjiawang@gmail.com"
 git config --global commit.gpgsign true
-git config --global gpg.program gpg2
-git config --global core.editor "vim"
+git config --global gpg.program gpg
+git config --global core.editor "nano"
 git config --global pull.rebase false
 #git config --global user.signingkey
 

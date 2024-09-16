@@ -1,3 +1,8 @@
+if !isdirectory(expand("~/.vim/bundle/Vundle.vim"))
+  silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  autocmd VimEnter * PluginUpdate
+endif
+
 set nocompatible
 filetype off
 

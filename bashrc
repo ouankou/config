@@ -15,12 +15,12 @@ export BOOST_LIB=/usr/lib/x86_64-linux-gnu
 export PATH=/snap/bin:$PATH
 
 # Add LLVM path
-export LLVM=$HOME/Projects/llvm-19
+#export LLVM=$HOME/Projects/llvm-19
 export LLVM_SRC=$LLVM/llvm_src
 export LLVM_BUILD=$LLVM/llvm_build
 export LLVM_PATH=$LLVM/llvm_install
 #export LLVM_PATH=/opt/llvm/llvm-install
-#export LLVM_PATH=/usr/lib/llvm-18
+export LLVM_PATH=/usr/lib/llvm-19
 
 export PATH=$LLVM_PATH/bin:$PATH
 export LD_LIBRARY_PATH=$LLVM_PATH/libexec:$LD_LIBRARY_PATH

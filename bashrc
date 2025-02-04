@@ -73,13 +73,6 @@ export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/ma
 export NVHPC_CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}
 export CUDA_PATH=${NVHPC_CUDA_HOME}
 
-export NVARCH=`uname -s`_`uname -m`
-export NVCOMPILERS=/opt/nvidia/hpc_sdk
-export MANPATH=$MANPATH:$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/compilers/man
-export PATH=$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/compilers/bin:${PATH}
-export PATH=$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/comm_libs/mpi/bin:${PATH}
-export MANPATH=$MANPATH:$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/comm_libs/mpi/man
-
 # WSL
 export PATH=${PATH}:/usr/lib/wsl/lib
 

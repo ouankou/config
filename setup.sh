@@ -73,8 +73,8 @@ sudo apt install -y g++-11
 
 cat bashrc >> $HOME/.bashrc
 
-git config --global user.name "Anjia Wang"
-git config --global user.email "anjiawang@gmail.com"
+git config --global user.name "ouankou"
+git config --global user.email "anjia@ouankou.com"
 git config --global commit.gpgsign true
 git config --global gpg.program gpg
 git config --global core.editor "nano"

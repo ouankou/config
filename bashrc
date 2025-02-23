@@ -15,7 +15,7 @@ export BOOST_LIB=/usr/lib/x86_64-linux-gnu
 export PATH=/snap/bin:$PATH
 
 # Add LLVM path
-export LLVM=$HOME/Projects/llvm-19
+export LLVM=$HOME/Projects/llvm-20
 if [ -d "$LLVM" ]; then
     export LLVM_PATH=$LLVM/llvm_install
 else
@@ -72,6 +72,10 @@ export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cu
 export LD_LIBRARY_PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/math_libs/${CUDA_VERSION}/targets/x86_64-linux/lib:${LD_LIBRARY_PATH}
 export NVHPC_CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/${NVIDIA_HPC_VERSION}/cuda/${CUDA_VERSION}
 export CUDA_PATH=${NVHPC_CUDA_HOME}
+
+export NVARCH=`uname -s`_`uname -m`
+export NVCOMPILERS=/opt/nvidia/hpc_sdk
+export PATH=$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/compilers/bin:${PATH}
 
 # WSL
 export PATH=${PATH}:/usr/lib/wsl/lib

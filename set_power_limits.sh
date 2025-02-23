@@ -3,9 +3,14 @@
 # Start at boot
 # sudo crontab -e
 # @reboot /home/ouankou/Projects/config/set_power_limits.sh
+#
+# thermald service may override the PL1 setting (e.g., from 60W to 200W).
+# In this case, it should be disabled.
+# sudo systemctl stop thermald
+# sudo systemctl disable thermald
 
 # Default power limit in watts (if no argument is given)
-DEFAULT_WATTS=65
+DEFAULT_WATTS=60
 
 # Get user input (first argument), default to DEFAULT_WATTS if not provided
 POWER_LIMIT_WATTS=${1:-$DEFAULT_WATTS}

@@ -19,7 +19,7 @@ export LLVM=$HOME/Projects/llvm-20
 if [ -d "$LLVM" ]; then
     export LLVM_PATH=$LLVM/llvm_install
 else
-    export LLVM_PATH=/usr/lib/llvm-19
+    export LLVM_PATH=/usr/lib/llvm-20
 fi
 export LLVM_SRC=$LLVM/llvm_src
 export LLVM_BUILD=$LLVM/llvm_build

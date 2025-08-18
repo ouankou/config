@@ -85,8 +85,8 @@ export PATH=${PATH}:/usr/lib/wsl/lib
 # Disabled since it may slow down clpeak significantly.
 # export OverrideDefaultFP64Settings=1
 # export IGC_EnableDPEmulation=1
-export ZET_ENABLE_PROGRAM_DEBUGGING=1
+# export ZET_ENABLE_PROGRAM_DEBUGGING=1
 
 export OMP_TARGET_OFFLOAD=MANDATORY
 
-export RUSTICL_ENABLE=radeonsi
+export RUSTICL_ENABLE=radeonsi,iris

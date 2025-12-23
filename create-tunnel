@@ -1,7 +1,48 @@
-ps aux | grep -q "\-R\ 8118"
-if [ $? -eq 0 ]; then
-    echo "The tunnel to cloud has been established."
-else
-    echo "Establishing the tunnel to cloud..."
-    ssh -f -N -R 8118:localhost:22 ouankou@kaffeineko.com
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+tunnel_port="${TUNNEL_PORT:-8118}"
+remote="${TUNNEL_REMOTE:-ouankou@eula.ouankou.com}"
+forward_spec="${tunnel_port}:localhost:22"
+identity_file="${TUNNEL_IDENTITY_FILE:-}"
+
+if [[ -z "${identity_file}" ]]; then
+    for candidate in \
+        "${HOME}/.ssh/id_ed25519" \
+        "${HOME}/.ssh/id_rsa" \
+        "${HOME}/.ssh/id_rsa_contact.key"; do
+        if [[ -f "${candidate}" ]]; then
+            identity_file="${candidate}"
+            break
+        fi
+    done
 fi
+
+if command -v pgrep >/dev/null 2>&1; then
+    if pgrep -f "[s]sh .* -R ${forward_spec} ${remote//./\\.}" >/dev/null 2>&1; then
+        exit 0
+    fi
+else
+    if ps aux | grep -q "[s]sh .* -R ${forward_spec} ${remote}"; then
+        exit 0
+    fi
+fi
+
+echo "Establishing the tunnel to cloud..."
+ssh_args=(
+    -f -N
+    -o BatchMode=yes
+    -o ExitOnForwardFailure=yes
+    -o ServerAliveInterval=30
+    -o ServerAliveCountMax=3
+    -o ConnectTimeout=10
+)
+
+if [[ -n "${identity_file}" ]]; then
+    ssh_args+=(-i "${identity_file}" -o IdentitiesOnly=yes)
+fi
+
+ssh "${ssh_args[@]}" \
+    -R "${forward_spec}" \
+    "${remote}"

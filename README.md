@@ -49,6 +49,14 @@ git config user.email ""
 git config user.signingkey
 ```
 
+## SSH Reverse Tunnel
+
+```
+# crontab -e
+@reboot sleep 30 && flock -n /tmp/create-tunnel.lock /home/ouankou/Projects/config/create-tunnel >>/home/ouankou/.create-tunnel.log 2>&1
+* * * * * flock -n /tmp/create-tunnel.lock /home/ouankou/Projects/config/create-tunnel >>/home/ouankou/.create-tunnel.log 2>&1
+```
+
 ## Misc
 
 #### Fix the keyboard not responding on login screen

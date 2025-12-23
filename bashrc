@@ -1,5 +1,5 @@
 # Add Java lib path
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-25-openjdk-amd64
 if [ -z "${LD_LIBRARY_PATH}" ]
 then
     export LD_LIBRARY_PATH=$JAVA_HOME/lib/server
@@ -19,7 +19,7 @@ export LLVM=$HOME/Projects/llvm-21
 if [ -d "$LLVM" ]; then
     export LLVM_PATH=$LLVM/llvm_install
 else
-    export LLVM_PATH=/usr/lib/llvm-21
+    export LLVM_PATH=/usr/lib/llvm-20
 fi
 export LLVM_SRC=$LLVM/llvm_src
 export LLVM_BUILD=$LLVM/llvm_build

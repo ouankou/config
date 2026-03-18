@@ -1,55 +1,97 @@
 # Add Java lib path
+prepend_path() {
+    local var_name="$1"
+    local value="$2"
+    if [ -z "$value" ] || [ ! -d "$value" ]; then
+        return
+    fi
+
+    local current_value="${!var_name:-}"
+    case ":$current_value:" in
+        *":$value:"*) ;;
+        *)
+            if [ -z "$current_value" ]; then
+                export "$var_name=$value"
+            else
+                export "$var_name=$value:$current_value"
+            fi
+            ;;
+    esac
+}
+
+remove_path_entry() {
+    local var_name="$1"
+    local value="$2"
+    local current_value="${!var_name:-}"
+    local rebuilt=""
+    local entry=""
+
+    if [ -z "$current_value" ] || [ -z "$value" ]; then
+        return
+    fi
+
+    IFS=':' read -r -a _path_entries <<< "$current_value"
+    for entry in "${_path_entries[@]}"; do
+        if [ -z "$entry" ] || [ "$entry" = "$value" ]; then
+            continue
+        fi
+        if [ -z "$rebuilt" ]; then
+            rebuilt="$entry"
+        else
+            rebuilt="$rebuilt:$entry"
+        fi
+    done
+
+    if [ -n "$rebuilt" ]; then
+        export "$var_name=$rebuilt"
+    else
+        unset "$var_name"
+    fi
+}
+
 export JAVA_HOME=/usr/lib/jvm/java-25-openjdk-amd64
-if [ -z "${LD_LIBRARY_PATH}" ]
-then
-    export LD_LIBRARY_PATH=$JAVA_HOME/lib/server
-else
-    export LD_LIBRARY_PATH=$JAVA_HOME/lib/server:$LD_LIBRARY_PATH
-fi
+prepend_path LD_LIBRARY_PATH "$JAVA_HOME/lib/server"
 
 # Add REX compiler path
-export REX_ROOT=$HOME/Projects/rexdev
-export LD_LIBRARY_PATH=$REX_ROOT/rex_install/lib:$LD_LIBRARY_PATH
-export PATH=$REX_ROOT/rex_install/bin:$PATH
+export REX_ROOT=$HOME
+prepend_path LD_LIBRARY_PATH "$REX_ROOT/rex_install/lib"
+prepend_path PATH "$REX_ROOT/rex_install/bin"
 export BOOST_LIB=/usr/lib/x86_64-linux-gnu
-export PATH=/snap/bin:$PATH
+prepend_path PATH /snap/bin
 
 # Add LLVM path
-export LLVM=$HOME/Projects/llvm-21
+export LLVM=$HOME/Projects/llvm-22
+export LLVM_SYSTEM_PATH=/usr/lib/llvm-22
 if [ -d "$LLVM" ]; then
     export LLVM_PATH=$LLVM/llvm_install
 else
-    export LLVM_PATH=/usr/lib/llvm-21
+    export LLVM_PATH=$LLVM_SYSTEM_PATH
 fi
 export LLVM_SRC=$LLVM/llvm_src
 export LLVM_BUILD=$LLVM/llvm_build
 
-export PATH=$LLVM_PATH/bin:$PATH
-export LD_LIBRARY_PATH=$LLVM_PATH/libexec:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LLVM_PATH/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$LLVM_PATH/lib/x86_64-unknown-linux-gnu:$LD_LIBRARY_PATH
-if [ -z "${LIBRARY_PATH}" ]
-then
-    export LIBRARY_PATH=$LLVM_PATH/libexec
-else
-    export LIBRARY_PATH=$LLVM_PATH/libexec:$LIBRARY_PATH
-fi
+remove_path_entry C_INCLUDE_PATH "$LLVM_PATH/include"
+remove_path_entry C_INCLUDE_PATH "$LLVM_SYSTEM_PATH/include"
+remove_path_entry CPLUS_INCLUDE_PATH "$LLVM_PATH/include"
+remove_path_entry CPLUS_INCLUDE_PATH "$LLVM_SYSTEM_PATH/include"
+remove_path_entry CPATH "$LLVM_PATH/include"
+remove_path_entry CPATH "$LLVM_SYSTEM_PATH/include"
+remove_path_entry LIBRARY_PATH "$LLVM_PATH/libexec"
+remove_path_entry LIBRARY_PATH "$LLVM_PATH/lib"
+remove_path_entry LIBRARY_PATH "$LLVM_PATH/lib/x86_64-linux-gnu"
+remove_path_entry LIBRARY_PATH "$LLVM_PATH/lib/x86_64-unknown-linux-gnu"
+remove_path_entry LIBRARY_PATH "$LLVM_SYSTEM_PATH/libexec"
+remove_path_entry LIBRARY_PATH "$LLVM_SYSTEM_PATH/lib"
+remove_path_entry LIBRARY_PATH "$LLVM_SYSTEM_PATH/lib/x86_64-linux-gnu"
+remove_path_entry LIBRARY_PATH "$LLVM_SYSTEM_PATH/lib/x86_64-unknown-linux-gnu"
 
-export LIBRARY_PATH=$LLVM_PATH/lib:$LIBRARY_PATH
-export LIBRARY_PATH=$LLVM_PATH/lib/x86_64-linux-gnu:$LIBRARY_PATH
-export MANPATH=$LLVM_PATH/share/man:$MANPATH
-if [ -z "${C_INCLUDE_PATH}" ]
-then
-    export C_INCLUDE_PATH=$LLVM_PATH/include
-else
-    export C_INCLUDE_PATH=$LLVM_PATH/include:$C_INCLUDE_PATH
-fi
-if [ -z "${CPLUS_INCLUDE_PATH}" ]
-then
-    export CPLUS_INCLUDE_PATH=$LLVM_PATH/include
-else
-    export CPLUS_INCLUDE_PATH=$LLVM_PATH/include:$CPLUS_INCLUDE_PATH
-fi
+export LLVM_OPENMP_INSTALL=$LLVM_PATH
+export LLVM_BINDIR=$LLVM_PATH/bin
+prepend_path PATH "$LLVM_PATH/bin"
+prepend_path LD_LIBRARY_PATH "$LLVM_PATH/lib"
+prepend_path LD_LIBRARY_PATH "$LLVM_PATH/lib/x86_64-unknown-linux-gnu"
+prepend_path LD_LIBRARY_PATH "$LLVM_PATH/lib/x86_64-linux-gnu"
+prepend_path MANPATH "$LLVM_PATH/share/man"
 
 # Add GPG support
 export GPG_TTY=$(tty)
@@ -75,10 +117,10 @@ export CUDA_PATH=${NVHPC_CUDA_HOME}
 
 export NVARCH=`uname -s`_`uname -m`
 export NVCOMPILERS=/opt/nvidia/hpc_sdk
-export PATH=$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/compilers/bin:${PATH}
+prepend_path PATH "$NVCOMPILERS/$NVARCH/${NVIDIA_HPC_VERSION}/compilers/bin"
 
 # WSL
-export PATH=${PATH}:/usr/lib/wsl/lib
+prepend_path PATH /usr/lib/wsl/lib
 
 # Intel OneAPI compiler
 # Emulate FP64 on Intel GPUs (Xe, Arc, ...)

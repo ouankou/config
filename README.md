@@ -57,6 +57,10 @@ git config user.signingkey
 * * * * * flock -n /tmp/create-tunnel.lock /home/ouankou/Projects/config/create-tunnel >>/home/ouankou/.create-tunnel.log 2>&1
 ```
 
+## Server Guides
+
+- [GitHub MFA protected JupyterLab](github-oauth2-jupyterlab.md)
+
 ## Misc
 
 #### Fix the keyboard not responding on login screen

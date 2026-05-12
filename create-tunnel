@@ -3,7 +3,7 @@
 set -euo pipefail
 
 tunnel_port="${TUNNEL_PORT:-8118}"
-remote="${TUNNEL_REMOTE:-ouankou@eula.ouankou.com}"
+remote="${TUNNEL_REMOTE:-ouankou@mona.ouankou.com}"
 forward_spec="${tunnel_port}:localhost:22"
 identity_file="${TUNNEL_IDENTITY_FILE:-}"
 

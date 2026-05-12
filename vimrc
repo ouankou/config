@@ -1,71 +1,93 @@
-if !isdirectory(expand("~/.vim/bundle/Vundle.vim"))
-  silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  autocmd VimEnter * PluginUpdate
-endif
-
 set nocompatible
-filetype off
+scriptencoding utf-8
+set encoding=utf-8
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+let s:plug_site = has('nvim') ? stdpath('data') . '/site' : expand('~/.vim')
+let s:plug_file = s:plug_site . '/autoload/plug.vim'
+let s:plugged_dir = has('nvim') ? stdpath('data') . '/plugged' : expand('~/.vim/plugged')
 
-Plugin 'gmarik/vundle'
-
-let os = substitute(system('uname'), '\n', '', '')
-if os == 'Linux'
-    set guifont=WenQuanYi\ Micro\ Hei\ Mono\ Regular\ 14
-else
-    set guifont=Source\ Code\ Pro:h18
+if empty(glob(s:plug_file))
+  if executable('curl')
+    silent execute '!curl -fLo ' . shellescape(s:plug_file) . ' --create-dirs ' .
+          \ shellescape('https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim')
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  else
+    echoerr 'vim-plug is missing and curl is not available to install it.'
+  endif
 endif
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'Yggdroot/indentLine'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'dracula/vim'
-Plugin 'ajmwagar/vim-deus'
-Plugin 'scrooloose/syntastic'
-Plugin 'jalvesaq/colorout'
+if filereadable(s:plug_file)
+  call plug#begin(s:plugged_dir)
 
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-Plugin 'google/vim-glaive'
+  Plug 'preservim/nerdtree'
+  Plug 'Yggdroot/indentLine'
+  Plug 'nanotech/jellybeans.vim'
+  Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'ajmwagar/vim-deus'
+  Plug 'jalvesaq/colorout'
 
-call vundle#end()
+  Plug 'dense-analysis/ale'
 
-call glaive#Install()
+  Plug 'google/vim-maktaba'
+  Plug 'google/vim-codefmt'
+  Plug 'google/vim-glaive'
+
+  call plug#end()
+endif
+
+silent! call glaive#Install()
+
+if has('gui_running')
+  if has('unix') && !has('macunix')
+    set guifont=WenQuanYi\ Micro\ Hei\ Mono\ Regular\ 14
+  else
+    set guifont=Source\ Code\ Pro:h18
+  endif
+endif
 
 syntax enable
+filetype plugin indent on
+
 let g:rehash256 = 1
 set background=dark
-colorscheme jellybeans
+silent! colorscheme jellybeans
 
 set number
 set printoptions=number:y
-set encoding=utf-8
 set wrap
 set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set expandtab
 set showmode
 set warn
-filetype plugin on
-filetype indent on
-set tabstop=4
-set expandtab
-set stal=1
-set wrapscan
-set dir=~
-set backupdir=~
-set autochdir
-set spell
-autocmd FileType html,css setlocal shiftwidth=2 tabstop=2
-autocmd BufRead,BufNewFile *.md set filetype=markdown
-nmap t :NERDTreeToggle<CR>
-let g:syntastic_cpp_compiler_options = 1
 set ruler
-set cole=0
-let g:tex_conceal = ""
-let g:pymode_python = 'python3'
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-        \| exe "normal! g'\"" | endif
+set showtabline=1
+set wrapscan
+set conceallevel=0
+set noautochdir
+
+let s:state_dir = expand('~/.vim')
+call mkdir(s:state_dir . '/backup', 'p')
+call mkdir(s:state_dir . '/swap', 'p')
+call mkdir(s:state_dir . '/undo', 'p')
+execute 'set backupdir^=' . fnameescape(s:state_dir . '/backup//')
+execute 'set directory^=' . fnameescape(s:state_dir . '/swap//')
+if has('persistent_undo')
+  set undofile
+  execute 'set undodir^=' . fnameescape(s:state_dir . '/undo//')
 endif
+
+let g:tex_conceal = ''
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_fix_on_save = 0
+
+nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
+
+augroup user_vimrc
+  autocmd!
+  autocmd FileType html,css setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+  autocmd BufRead,BufNewFile *.md setfiletype markdown
+  autocmd FileType gitcommit,markdown,text setlocal spell
+  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
+augroup END

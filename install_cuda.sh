@@ -1,5 +1,6 @@
 #!/bin/bash
 
-wget https://developer.download.nvidia.com/hpc-sdk/24.3/nvhpc_2024_243_Linux_x86_64_cuda_12.3.tar.gz
-tar xpzf nvhpc_2024_243_Linux_x86_64_cuda_12.3.tar.gz
-sudo nvhpc_2024_243_Linux_x86_64_cuda_12.3/install
+NVHPC_PKG=nvhpc_2024_243_$(uname -s)_$(uname -m)_cuda_12.3
+wget https://developer.download.nvidia.com/hpc-sdk/24.3/$NVHPC_PKG.tar.gz
+tar xpzf $NVHPC_PKG.tar.gz
+sudo $NVHPC_PKG/install
